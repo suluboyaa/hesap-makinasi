@@ -79,12 +79,9 @@ button:hover {
   margin-top: 15px;
   text-align: center;
   font-size: 0.85rem;
-  color: #777;
+  color: #999;
   opacity: 0.8;
   user-select: none;
-}
-.signature {
-  color: #999;
 }
 
 .signature::after {
