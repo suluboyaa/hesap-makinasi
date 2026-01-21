@@ -3,31 +3,34 @@ let justCalculated = false;
 
 
 function append(value) {
-  const isOperator = ["+", "-", "*", "/", "**"].includes(value);
+  const operators = ["+", "-", "*", "/", "**", "×", "÷"];
 
-  // ekran sadece 0 ise ve sayı geliyorsa → 0'ı sil
-  if (display.innerText === "0" && !isOperator) {
+  // = sonrası sayı gelirse → yeni işlem
+  if (justCalculated && !operators.includes(value)) {
+    display.innerText = value;
+    justCalculated = false;
+    return;
+  }
+
+  // ekranda SADECE 0 varsa → ez
+  if (display.innerText === "0" && !operators.includes(value)) {
     display.innerText = value;
     return;
   }
 
-  // = sonrası davranış
-  if (justCalculated && !isOperator) {
-    display.innerText = value;
-  } else {
-    display.innerText += value;
-  }
-
-  justCalculated = false;
+  display.innerText += value;
 }
+
 
 
 
 
 function clearDisplay() {
   display.innerText = "0";
+  history.innerText = "";
   justCalculated = false;
 }
+
 
 
 function del() {
@@ -36,10 +39,9 @@ function del() {
 
 function calculate() {
   try {
-    let expression = display.innerText;
-
-    // güvenli temizlik
-    expression = expression.replace(/×/g, "*").replace(/÷/g, "/");
+    let expression = display.innerText
+      .replace(/×/g, "*")
+      .replace(/÷/g, "/");
 
     const result = Function("return " + expression)();
 
@@ -51,6 +53,7 @@ function calculate() {
     display.innerText = "HATA";
   }
 }
+
 
 
 function sqrt() {
