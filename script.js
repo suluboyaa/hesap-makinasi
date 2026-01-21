@@ -30,12 +30,22 @@ function del() {
 
 function calculate() {
   try {
-    display.innerText = eval(display.innerText);
+    let expression = display.innerText;
+
+    // güvenli temizlik
+    expression = expression.replace(/×/g, "*").replace(/÷/g, "/");
+
+    const result = Function("return " + expression)();
+
+    history.innerText = expression + " =";
+    display.innerText = result;
+
     justCalculated = true;
   } catch {
-    display.innerText = "Hata 😅";
+    display.innerText = "HATA";
   }
 }
+
 
 function sqrt() {
   let v = Number(display.innerText);
