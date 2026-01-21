@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #3d6680, hsl(283, 66%, 59%));
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator {
+  background: rgb(146, 67, 67);
+  padding: 20px;
+  border-radius: 25px;
+  width: 320px;
+  box-shadow: 0 50px 250px rgba(0, 0, 0, 1);
+}
+
+#display {
+  background: #9b4365;
+  padding: 15px;
+  border-radius: 15px;
+  font-size: 26px;
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  padding: 14px;
+  font-size: 16px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  background: #d36da8;
+  color: #111827;   /* ← sayı ve sembollerin rengi */
+  transition: 0.2s;
+}
+
+
+button:hover {
+  background: #000000;
+  color: #000000;
+}
+
+
+.equals {
+  background: #fca5a5;
+  color: rgb(0, 0, 0);
+  grid-row: span 2;
+}
+
+.equals:hover {
+  background: #000000;
+}
+
+.zero {
+  grid-column: span 2;
+}
+
+.pink {
+  background: #fca5a5;
+  color: rgb(255, 255, 255);
+}
+
+.pink:hover {
+  background: #f87171;
+}
+
+
