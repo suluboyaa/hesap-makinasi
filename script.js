@@ -3,18 +3,24 @@ let justCalculated = false;
 
 
 function append(value) {
-  const isOperator = ["+", "-", "*", "/","**"].includes(value);
+  const isOperator = ["+", "-", "*", "/", "**"].includes(value);
 
+  // ekran sadece 0 ise ve sayı geliyorsa → 0'ı sil
+  if (display.innerText === "0" && !isOperator) {
+    display.innerText = value;
+    return;
+  }
+
+  // = sonrası davranış
   if (justCalculated && !isOperator) {
-    // sayı geldiyse yeni işlem
     display.innerText = value;
   } else {
-    // işlem geldiyse sonuçtan devam
     display.innerText += value;
   }
 
   justCalculated = false;
 }
+
 
 
 
